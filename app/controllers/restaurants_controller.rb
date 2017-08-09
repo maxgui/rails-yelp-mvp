@@ -6,12 +6,16 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @categories = Restaurant::CATEGORIES.sort
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def show
@@ -20,12 +24,19 @@ class RestaurantsController < ApplicationController
 
   def edit
     set_restaurant
+    @categories = Restaurant::CATEGORIES.sort
   end
 
   def update
     set_restaurant
     @restaurant.update(restaurant_params)
     redirect_to restaurant_path(@restaurant)
+  end
+
+  def destroy
+    set_restaurant
+    @restaurant.delete
+    redirect_to restaurants_path
   end
 
   private

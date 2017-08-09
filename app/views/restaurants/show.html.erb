@@ -1,4 +1,30 @@
-<%= @restaurant.name %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="product">
+          <div class='product-body'>
+            <h3><%= @restaurant.name.capitalize %></h3>
+            <div class="description">
+              <p><i class="fa fa-map-marker"></i> <%= @restaurant.address %></p>
+              <p><i class="fa fa-phone"></i> <%= @restaurant.phone_number %></p>
+              <p><i class="fa fa-question-circle"></i> <%= @restaurant.category.capitalize %></p>
+            </div>
+        </div>
+        <ul class="list-inline product-controls hidden-sm hidden-xs">
+          <li><%= link_to edit_restaurant_path(@restaurant) do %>
+              <i class="fa fa-edit"></i>
+              <% end %></li>
+          <li><%= link_to restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash"></i>
+              <% end %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant), class: 'btn btn-warning' %>
-
+<div class="container text-center">
+  <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant), class: 'btn btn-warning' %>
+  <%= link_to 'Back to restaurants', restaurants_path, class: 'btn btn-success' %>
+  <%= link_to 'Delete restaurant', restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+</div>

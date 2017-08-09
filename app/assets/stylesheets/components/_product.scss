@@ -5,6 +5,9 @@
   border-radius: 3px;
   transition: all 0.15s ease;
   margin-bottom: 30px;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 2px 3px rgba (220, 220, 220, 0.3);
+  background-color: white;
 }
 
 /* Body design */
@@ -101,4 +104,16 @@
 .description {
   display:flex;
   justify-content: space-around;
+}
+
+.fa-map-marker{
+  color: $red;
+}
+
+.fa-phone {
+  color: $green;
+}
+
+.fa-question-circle{
+  color: $yellow;
 }

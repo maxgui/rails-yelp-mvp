@@ -1,23 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <% @restaurants.each do |restaurant| %>
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-6 col-md-offset-3">
         <div class="product">
           <div class='product-body'>
             <h3><%= restaurant.name.capitalize %></h3>
-            <div class="description">
-              <p><i class="fa fa-map-marker"></i><%= restaurant.address %></p>
-              <p><i class="fa fa-phone"></i> <%= restaurant.phone_number %></p>
-              <p><i class="fa fa-question-circle"></i> <%= restaurant.category %></p>
-            </div>
+              <div class="description">
+                <p><i class="fa fa-map-marker"></i> <%= restaurant.address %></p>
+                <p><i class="fa fa-phone"></i> <%= restaurant.phone_number %></p>
+                <p><i class="fa fa-question-circle"></i> <%= restaurant.category.capitalize %></p>
+              </div>
+          </div>
+          <ul class="list-inline product-controls hidden-sm hidden-xs">
+            <li>
+              <%= link_to edit_restaurant_path(restaurant) do %>
+              <i class="fa fa-edit"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to restaurant_path(restaurant) do %>
+              <i class="fa fa-commenting-o"></i>
+              <% end %>
+            </li>
+          </ul>
         </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-edit"></i></a></li>
-          <li><a href=""><i class="fa fa-trash"></i></a></li>
-        </ul>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
