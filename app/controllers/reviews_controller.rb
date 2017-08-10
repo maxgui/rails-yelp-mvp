@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @ratings = Review::RATINGS.sort
+
   end
 
   def create
@@ -22,6 +24,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_restaurant
-     @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 end
